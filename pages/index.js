@@ -3,7 +3,7 @@ import axios from "axios";
 import MainLayout from "../components/layouts/mainLayout";
 
 export default class Home extends Component {
-  static async getInitialProps() {
+  static async getInitialProps(context) {
     let userData;
 
     try {
@@ -14,6 +14,8 @@ export default class Home extends Component {
     } catch {
       console.log("error");
     }
+
+    console.log("context", context);
 
     return {
       user: {
