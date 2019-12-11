@@ -30,6 +30,7 @@ export default class Profile extends Component {
     return (
       <MainLayout>
         <br />
+        <h1>User Profile</h1>
         {this.renderUser(this.props.user)}
       </MainLayout>
     );

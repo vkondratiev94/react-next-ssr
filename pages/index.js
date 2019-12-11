@@ -35,6 +35,8 @@ export default class Home extends Component {
       <li className="list-group-item" key={index}>
         {/* <Link href={`/users/profile?userId=${user.id}`}> */}
         <Link
+          // masking actual url in 'href' with fake in 'as' prop
+          as={`/users/profile/${user.id}`}
           href={{
             pathname: "/users/profile",
             query: {
