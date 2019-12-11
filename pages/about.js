@@ -4,21 +4,34 @@ import Message from "../components/includes/message";
 import Router from "next/router";
 
 export default class About extends Component {
+  handleRouteStart = url => {
+    console.log("App is changing to:", url);
+  };
+
+  handleRouteChangeComplete = url => {
+    console.log("App changed:", url);
+  };
+
+  handleBeforeHistoryChange = url => {
+    console.log("App changed history:", url);
+  };
+
   componentDidMount() {
-    console.log(Router.pathname);
-    console.log(Router.query);
+    Router.events.on("routeChangeStart", this.handleRouteStart);
+    Router.events.on("routeChangeComplete", this.handleRouteChangeComplete);
+    Router.events.on("beforeHistoryChange", this.handleBeforeHistoryChange);
 
     // called before going back from the page
-    Router.beforePopState(({ url, as, options }) => {
-      // if previous page is '/contact', skip coming back
-      if (as === "/contact") {
-        window.location.href = "/whatever";
-        return false;
-      }
-      return true;
-    });
+    // Router.beforePopState(({ url, as, options }) => {
+    //   // if previous page is '/contact', skip coming back
+    //   if (as === "/contact") {
+    //     window.location.href = "/whatever";
+    //     return false;
+    //   }
+    //   return true;
+    // });
 
-    Router.replace("/contact", "/contact/56");
+    // Router.replace("/contact", "/contact/56");
   }
 
   render() {
