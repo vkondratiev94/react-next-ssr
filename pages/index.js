@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MainLayout from "../components/layouts/mainLayout";
+import styles from "../styles/main.scss";
 
 export default class Home extends Component {
   static async getInitialProps(context) {
@@ -38,7 +39,7 @@ export default class Home extends Component {
   render() {
     return (
       <MainLayout>
-        <h1>Welcome to my page!</h1>
+        <h1 className={styles.superAwesome}>Welcome to my page!</h1>
       </MainLayout>
     );
   }
